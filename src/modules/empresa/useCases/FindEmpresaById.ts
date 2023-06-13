@@ -1,14 +1,14 @@
 import { ITesteDTO } from "../infra/entities/IEmpresaDTO";
 import { IEmpresaRepository } from "../infra/repositories/IEmpresaRepository";
 
-class FindAllEmpresaUseCase {
+class FindEmpresaById {
   constructor(private empresaRepository: IEmpresaRepository) {}
 
-  async execute(): Promise<ITesteDTO[]> {
-    const empresas = await this.empresaRepository.findAll();
+  async execute(id: string): Promise<ITesteDTO | null> {
+    const empresa = await this.empresaRepository.findById(id);
 
-    return empresas;
+    return empresa;
   }
 }
 
-export { FindAllEmpresaUseCase };
+export { FindEmpresaById };

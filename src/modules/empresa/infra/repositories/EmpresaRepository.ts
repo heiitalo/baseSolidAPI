@@ -9,6 +9,18 @@ class EmpresaRepository implements IEmpresaRepository {
     return empresas;
   }
 
+  async findById(id: string): Promise<IEmpresaDTO | null> {
+    const empresa = await Empresa.findById(id);
+
+    return empresa;
+  }
+
+  async findByEmail(email: string): Promise<IEmpresaDTO | null> {
+    const empresa = await Empresa.findOne({email: `${email}` });
+    
+    return empresa;
+  }
+
   async register({
     name,
     empresaName,
