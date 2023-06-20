@@ -3,6 +3,7 @@ import { FindAllEmpresaUseCase } from "../useCases/FindAllEmpresa";
 
 class FindAllEmpresasController {
   constructor(private findAllEmpresasUseCase: FindAllEmpresaUseCase) {}
+  
   async execute(req: Request, res: Response): Promise<Response> {
     const findAllEmpresas = await this.findAllEmpresasUseCase.execute();
 

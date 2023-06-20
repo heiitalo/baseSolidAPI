@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import "./src/shared/container"
 import { router } from "./src/shared/routes";
 import express from "express";
 import { connectDataBase } from "./src/shared/database/db";

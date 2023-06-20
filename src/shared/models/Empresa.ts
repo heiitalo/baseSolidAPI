@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 // const mongoose = require("mongoose")
 
-const UserSchema = new mongoose.Schema(
+const EmpresaSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -25,6 +25,6 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Empresa = mongoose.model("Empresa", UserSchema);
+const Empresa = mongoose.model("Empresa", EmpresaSchema);
 
 export { Empresa };
