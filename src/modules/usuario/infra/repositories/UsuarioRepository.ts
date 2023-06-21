@@ -37,7 +37,7 @@ class UsuarioRepository implements IUsuarioRepository {
 
   async findAll(): Promise<IUSuarioDTO[]> {
     const usuarios = await Usuario.find();
-
+    //console.log(usuarios)
     return usuarios;
   }
 

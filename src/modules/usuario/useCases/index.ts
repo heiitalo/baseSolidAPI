@@ -15,7 +15,7 @@ const cadUsuarioUseCase = new CadUsuarioUseCase(usuarioRepository);
 
 const findAllUsuariosUseCase = new FindAllUsuarioUseCase(usuarioRepository);
 
-const findAllUsuariosController = new FindAllUsuariosController(findAllUsuariosUseCase);
+// const findAllUsuariosController = new FindAllUsuariosController(findAllUsuariosUseCase);
 
 const findUsuarioByIduseCase = new FindUsuarioByIdUseCase(usuarioRepository);
 
@@ -26,7 +26,7 @@ export {
     cadUsuarioUseCase,
     // cadUsuarioController,
     findAllUsuariosUseCase,
-    findAllUsuariosController,
+    // findAllUsuariosController,
     findUsuarioByIduseCase,
     findUsuarioByIdController
 }
