@@ -1,4 +1,4 @@
-import {inject, injectable} from "tsyringe"
+import {inject, injectable} from "tsyringe";
 import {IUSuarioDTO} from "../infra/entities/IUsuarioDTO";
 import {IUsuarioRepository} from "../infra/repositories/IUsuarioRepository";
 @injectable()
@@ -9,7 +9,7 @@ class FindAllUsuarioUseCase {
 
     async execute(): Promise<IUSuarioDTO[]> {
         const usuarios = await this.usuarioRepository.findAll();
-      //  console.log(usuarios);
+
         return usuarios;
     }
 }

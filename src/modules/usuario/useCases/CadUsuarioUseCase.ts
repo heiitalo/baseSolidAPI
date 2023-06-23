@@ -2,7 +2,7 @@
 import {inject, injectable} from "tsyringe"
 import { IUSuarioDTO } from "../infra/entities/IUsuarioDTO";
 import { IUsuarioRepository } from "../infra/repositories/IUsuarioRepository";
-
+import bcrypt from "bcrypt";
 @injectable()
 class CadUsuarioUseCase {
   constructor(
@@ -24,11 +24,13 @@ class CadUsuarioUseCase {
     celular,
     foto,
   }: IUSuarioDTO): Promise<void> {
+
+    const senhaHash = await bcrypt.hash(senha, 8)
     await this.usuarioRepository.register({
       userName,
       nome,
       email,
-      senha,
+      senha: senhaHash,
       dataNascimento,
       cpf,
       pais,

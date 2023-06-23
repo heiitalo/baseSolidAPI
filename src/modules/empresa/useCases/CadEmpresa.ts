@@ -1,9 +1,13 @@
+import { inject, injectable } from "tsyringe";
 import AppError from "../../../shared/errors/AppError";
 import { IEmpresaDTO } from "../infra/entities/IEmpresaDTO";
 import { IEmpresaRepository } from "../infra/repositories/IEmpresaRepository";
 
+@injectable()
 class CadEmpresaUseCase {
-  constructor(private empresaRepository: IEmpresaRepository) {}
+  constructor(
+    @inject("EmpresaRepository")
+    private empresaRepository: IEmpresaRepository) {}
 
   async execute({
     name,

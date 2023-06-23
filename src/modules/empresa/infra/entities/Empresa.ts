@@ -6,7 +6,7 @@ class Empresa {
 
     constructor(name: string, email: string, telefone: string, empresaName: string) {
         this.name = name;
-        this.empresaName = email;
+        this.email = email;
         this.telefone = telefone;
         this.empresaName = empresaName;
     }

@@ -1,14 +1,16 @@
 import { Router } from "express";
-import {UsuarioController} from "../controllers/UsuarioController"
+import {CadUsuarioController, FindAllUsuarioController, FindUsuarioByIdController} from "../controllers/UsuarioController"
 
-const usuarioController = new UsuarioController();
+const cadUsuarioController = new CadUsuarioController();
+const findAllUsuarioController = new FindAllUsuarioController();
+const findUsuarioByIdController = new FindUsuarioByIdController();
 
 const usuarioRoute = Router();
 
-usuarioRoute.post('/', usuarioController.create)
+usuarioRoute.post('/', cadUsuarioController.create)
 
-usuarioRoute.get('/', usuarioController.findAll);
+usuarioRoute.get('/', findAllUsuarioController.findAll);
 
-usuarioRoute.get('/:id', usuarioController.findById)
+usuarioRoute.get('/:id', findUsuarioByIdController.findById)
 
 export { usuarioRoute };
