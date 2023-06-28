@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {CadUsuarioController, FindAllUsuarioController, FindUsuarioByIdController, LoginUsuarioController} from "../controllers/UsuarioController"
+import { checkToken } from "../../../shared/middlewares/Usuario/Auth";
 
 const cadUsuarioController = new CadUsuarioController();
 const findAllUsuarioController = new FindAllUsuarioController();
@@ -14,6 +15,6 @@ usuarioRoute.post('/login', loginUsuarioController.login)
 
 usuarioRoute.get('/', findAllUsuarioController.findAll);
 
-usuarioRoute.get('/:id', findUsuarioByIdController.findById)
+usuarioRoute.get('/:id', checkToken, findUsuarioByIdController.findById)
 
 export { usuarioRoute };
