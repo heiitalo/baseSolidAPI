@@ -1,4 +1,4 @@
-import { IUSuarioDTO } from "../entities/IUsuarioDTO";
+import { ICadUSuarioDTO, IUSuarioDTO } from "../entities/IUsuarioDTO";
 import { IUsuarioRepository } from "./IUsuarioRepository";
 import { Usuario } from "../../../../shared/models/Usuario";
 
@@ -8,6 +8,7 @@ class UsuarioRepository implements IUsuarioRepository {
     nome,
     email,
     senha,
+    confirmaSenha,
     dataNascimento,
     cpf,
     pais,
@@ -17,12 +18,13 @@ class UsuarioRepository implements IUsuarioRepository {
     numero,
     celular,
     foto,
-  }: IUSuarioDTO): Promise<void> {
+  }: ICadUSuarioDTO): Promise<void> {
     await Usuario.create({
       userName,
       nome,
       email,
       senha,
+      confirmaSenha,
       dataNascimento,
       cpf,
       pais,
@@ -36,15 +38,21 @@ class UsuarioRepository implements IUsuarioRepository {
   }
 
   async findAll(): Promise<IUSuarioDTO[]> {
-    const usuarios = await Usuario.find();
+    const usuarios = await Usuario.find({}, {senha: 0, _id: 0, __v: 0});
     //console.log(usuarios)
     return usuarios;
   }
 
   async findById(id: string): Promise<IUSuarioDTO | null> {
-    const empresa = await Usuario.findById(id);
+    const usuario = await Usuario.findById(id, {senha: 0, _id: 0, __v: 0});
 
-    return empresa;
+    return usuario;
+  }
+
+  async findByEmail(email: string): Promise<IUSuarioDTO | null> {
+    const usuario = await Usuario.findOne({email: `${email}` });
+    
+    return usuario;
   }
 }
 

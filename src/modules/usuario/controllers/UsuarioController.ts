@@ -5,6 +5,7 @@ import {
   FindAllUsuarioUseCase,
   FindUsuarioByIdUseCase,
 } from "../useCases/FindUsuarioUseCase";
+import { LoginUseCase } from "../useCases/LoginUseCase";
 
 // class UsuarioController {
 //   async create(req: Request, res: Response): Promise<Response> {
@@ -88,6 +89,7 @@ class CadUsuarioController {
       nome,
       email,
       senha,
+      confirmaSenha,
       dataNascimento,
       cpf,
       pais,
@@ -107,6 +109,7 @@ class CadUsuarioController {
         nome,
         email,
         senha,
+        confirmaSenha,
         dataNascimento,
         cpf,
         pais,
@@ -160,8 +163,31 @@ class FindUsuarioByIdController {
   }
 }
 
+class LoginUsuarioController{
+  async login(req: Request, res: Response): Promise<Response> {
+    const {email, senha} = req.body
+
+    const loginUsuarioUseCase = container.resolve(LoginUseCase);
+    try {
+      const token = await loginUsuarioUseCase.execute({
+        email,
+        senha,
+      });
+      return res.status(200).json ({
+        message: "login OK",
+        token: token
+      })
+    } catch (err) {
+      return res. status(401).json({
+        err,
+      })
+    }
+  }
+}
+
 export {
   CadUsuarioController,
   FindAllUsuarioController,
   FindUsuarioByIdController,
+  LoginUsuarioController
 };

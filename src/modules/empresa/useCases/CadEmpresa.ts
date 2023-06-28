@@ -18,7 +18,7 @@ class CadEmpresaUseCase {
     const emailExists = await this.empresaRepository.findByEmail(email);
 
     if (emailExists) {
-      throw new AppError("Email já cadastrado", 400);
+      throw new AppError("Email já cadastrado", 401);
     } else {
       await this.empresaRepository.register({
         name,

@@ -1,5 +1,5 @@
 import {inject, injectable} from "tsyringe";
-import {IUSuarioDTO} from "../infra/entities/IUsuarioDTO";
+import { IUSuarioDTO} from "../infra/entities/IUsuarioDTO";
 import {IUsuarioRepository} from "../infra/repositories/IUsuarioRepository";
 @injectable()
 class FindAllUsuarioUseCase {
